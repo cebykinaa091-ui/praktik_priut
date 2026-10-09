@@ -4,753 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>О приюте — Лапа Помощи</title>
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        :root {
-            --color-blue: #96B8E4;
-            --color-green: #9ECD41;
-            --color-dark-green: #466840;
-            --color-sand: #E9C48E;
-            --color-blue-dark: #7A9DD0;
-            --color-blue-light: #D6E4F5;
-            --color-green-dark: #8CB837;
-            --color-green-light: #E8F4D0;
-            --color-sand-light: #F7E7CD;
-            --color-sand-dark: #D4A96A;
-            --color-bg: #F7F4F0;
-            --color-bg-alt: #EFEAE4;
-            --color-white: #FFFFFF;
-            --color-text: #2C2C2C;
-            --color-text-light: #6B6B6B;
-            --color-muted: #9A9A9A;
-            --color-border: rgba(70, 104, 64, 0.12);
-            --color-border-light: rgba(70, 104, 64, 0.08);
-            
-            --font-heading: 'Lora', serif;
-            --font-body: 'Inter', sans-serif;
-            
-            --radius-xl: 40px;
-            --radius-lg: 28px;
-            --radius-md: 20px;
-            --radius-sm: 14px;
-            
-            --shadow-sm: 0 2px 8px rgba(70, 104, 64, 0.04);
-            --shadow-md: 0 8px 32px rgba(70, 104, 64, 0.06);
-            --shadow-lg: 0 20px 60px rgba(70, 104, 64, 0.1);
-            --shadow-xl: 0 32px 80px rgba(70, 104, 64, 0.14);
-            --shadow-blue: 0 20px 60px rgba(150, 184, 228, 0.25);
-            --shadow-green: 0 20px 60px rgba(158, 205, 65, 0.25);
-            --shadow-sand: 0 20px 60px rgba(233, 196, 142, 0.35);
-            
-            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        * { box-sizing: border-box; }
-        body {
-            font-family: var(--font-body);
-            background-color: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.7;
-            text-align: center;
-            -webkit-font-smoothing: antialiased;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-            color: var(--color-dark-green);
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        img { max-width: 100%; height: auto; }
-        .eyebrow {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--color-blue-dark);
-            margin-bottom: 16px;
-        }
-        .eyebrow.green { color: var(--color-green-dark); }
-        .eyebrow.sand { color: var(--color-sand-dark); }
-
-        /* ШАПКА */
-        .navbar-custom {
-            background-color: rgba(247, 244, 240, 0.9);
-            backdrop-filter: blur(20px);
-            padding: 18px 0;
-            border-bottom: 1px solid var(--color-border-light);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .navbar-brand-custom {
-            font-family: var(--font-heading);
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--color-dark-green);
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .brand-mark {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            background-color: var(--color-dark-green);
-            color: var(--color-green);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-        .brand-text small {
-            display: block;
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--color-muted);
-            margin-top: 4px;
-        }
-        .nav-link-custom {
-            font-weight: 500;
-            font-size: 14.5px;
-            color: var(--color-text);
-            padding: 8px 0;
-            margin: 0 18px;
-        }
-        .nav-link-custom:hover { color: var(--color-blue-dark); }
-        .nav-link-custom.active { color: var(--color-dark-green); }
-        .nav-link-custom.active::after {
-            content: '';
-            display: block;
-            height: 2px;
-            background-color: var(--color-blue);
-            margin-top: 6px;
-        }
-        .btn-login {
-            background-color: var(--color-dark-green);
-            color: var(--color-white);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 13.5px;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-login:hover { background-color: var(--color-blue); color: var(--color-white); }
-
-        /* HERO */
-        .page-header {
-            padding: 80px 0 80px;
-            background: linear-gradient(135deg, #F7F4F0 0%, #E8EFF8 50%, #F7E7CD 100%);
-            border-radius: 0 0 var(--radius-xl) var(--radius-xl);
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 60px;
-        }
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: -150px;
-            right: -150px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(150, 184, 228, 0.3) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .page-header::after {
-            content: '';
-            position: absolute;
-            bottom: -150px;
-            left: -150px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(158, 205, 65, 0.2) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .page-header .container { position: relative; z-index: 1; }
-
-        .page-title { font-size: 56px; margin-bottom: 20px; line-height: 1.1; }
-        .page-subtitle {
-            font-size: 17px;
-            color: var(--color-text-light);
-            max-width: 620px;
-            margin: 0 auto;
-        }
-
-        /* ОБЩИЕ СЕКЦИИ */
-        .section { padding: 80px 0; }
-        .section-title {
-            font-size: 42px;
-            margin-bottom: 16px;
-            line-height: 1.15;
-        }
-        .section-subtitle {
-            font-size: 16px;
-            color: var(--color-text-light);
-            max-width: 620px;
-            margin: 0 auto 56px;
-        }
-
-        /* МИССИЯ */
-        .mission-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-        .mission-card {
-            background-color: var(--color-white);
-            border-radius: var(--radius-lg);
-            text-align: left;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border: 2px solid transparent;
-            padding: 40px 32px;
-        }
-        .mission-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--color-green);
-        }
-        .mission-icon {
-            width: 72px;
-            height: 72px;
-            border-radius: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            margin-bottom: 24px;
-        }
-        .mission-icon.blue { background-color: var(--color-blue-light); color: var(--color-blue-dark); }
-        .mission-icon.green { background-color: var(--color-green-light); color: var(--color-dark-green); }
-        .mission-icon.sand { background-color: var(--color-sand-light); color: var(--color-sand-dark); }
+        .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .mission-card { background: var(--color-white); border-radius: var(--radius-lg); text-align: left; box-shadow: var(--shadow-sm); transition: var(--transition); border: 2px solid transparent; padding: 40px 32px; }
+        .mission-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--color-green); }
+        .mission-icon { width: 72px; height: 72px; border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 30px; margin-bottom: 24px; }
+        .mission-icon.blue { background: var(--color-blue-light); color: var(--color-blue-dark); }
+        .mission-icon.green { background: var(--color-green-light); color: var(--color-dark-green); }
+        .mission-icon.sand { background: var(--color-sand-light); color: var(--color-sand-dark); }
         .mission-card h3 { font-size: 22px; margin-bottom: 12px; }
         .mission-card p { font-size: 15px; color: var(--color-text-light); margin: 0; }
 
-        /* ТАЙМЛАЙН ГОРИЗОНТАЛЬНЫЙ */
-        .timeline-section {
-            padding: 80px 0;
-            background-color: var(--color-bg-alt);
-            position: relative;
-            overflow: hidden;
-        }
-        .timeline-section::before {
-            content: '';
-            position: absolute;
-            top: -150px;
-            right: -150px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(150, 184, 228, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .timeline-section .container { position: relative; z-index: 1; }
-
-        .timeline-horizontal {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            position: relative;
-            margin-top: 40px;
-        }
-        .timeline-horizontal::before {
-            content: '';
-            position: absolute;
-            top: 60px;
-            left: 5%;
-            right: 5%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-blue) 0%, var(--color-green) 33%, var(--color-sand) 66%, var(--color-dark-green) 100%);
-            border-radius: 3px;
-            z-index: 0;
-        }
-        .timeline-card {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .timeline-year-big {
-            font-family: var(--font-heading);
-            font-size: 72px;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 24px;
-            letter-spacing: -0.04em;
-            transition: var(--transition);
-            background-color: var(--color-bg-alt);
-            padding: 0 20px;
-        }
+        .timeline-section { padding: 80px 0; background: var(--color-bg-alt); }
+        .timeline-horizontal { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; margin-top: 40px; }
+        .timeline-horizontal::before { content: ''; position: absolute; top: 60px; left: 5%; right: 5%; height: 3px; background: linear-gradient(90deg, var(--color-blue) 0%, var(--color-green) 33%, var(--color-sand) 66%, var(--color-dark-green) 100%); border-radius: 3px; z-index: 0; }
+        .timeline-card { position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .timeline-year-big { font-family: var(--font-heading); font-size: 72px; font-weight: 700; line-height: 1; margin-bottom: 24px; letter-spacing: -0.04em; background: var(--color-bg-alt); padding: 0 20px; }
         .timeline-card:nth-child(1) .timeline-year-big { color: var(--color-blue); }
         .timeline-card:nth-child(2) .timeline-year-big { color: var(--color-green); }
         .timeline-card:nth-child(3) .timeline-year-big { color: var(--color-sand); }
         .timeline-card:nth-child(4) .timeline-year-big { color: var(--color-dark-green); }
-
-        .timeline-dot {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: var(--color-white);
-            border: 4px solid var(--color-blue);
-            margin-bottom: 24px;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 0 0 6px var(--color-bg-alt);
-        }
+        .timeline-dot { width: 20px; height: 20px; border-radius: 50%; background: var(--color-white); border: 4px solid var(--color-blue); margin-bottom: 24px; z-index: 2; box-shadow: 0 0 0 6px var(--color-bg-alt); }
         .timeline-card:nth-child(2) .timeline-dot { border-color: var(--color-green); }
         .timeline-card:nth-child(3) .timeline-dot { border-color: var(--color-sand); }
         .timeline-card:nth-child(4) .timeline-dot { border-color: var(--color-dark-green); }
-
-        .timeline-card-content {
-            background-color: var(--color-white);
-            border-radius: var(--radius-md);
-            padding: 28px 24px;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border-top: 4px solid transparent;
-            text-align: center;
-            width: 100%;
-        }
+        .timeline-card-content { background: var(--color-white); border-radius: var(--radius-md); padding: 28px 24px; box-shadow: var(--shadow-sm); transition: var(--transition); border-top: 4px solid transparent; width: 100%; }
         .timeline-card:nth-child(1) .timeline-card-content { border-top-color: var(--color-blue); }
         .timeline-card:nth-child(2) .timeline-card-content { border-top-color: var(--color-green); }
         .timeline-card:nth-child(3) .timeline-card-content { border-top-color: var(--color-sand); }
         .timeline-card:nth-child(4) .timeline-card-content { border-top-color: var(--color-dark-green); }
-        .timeline-card:hover .timeline-card-content {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-        }
+        .timeline-card:hover .timeline-card-content { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
         .timeline-card-content h4 { font-size: 18px; margin-bottom: 10px; }
         .timeline-card-content p { font-size: 13.5px; color: var(--color-text-light); margin: 0; line-height: 1.6; }
 
-        /* ИСТОРИИ СПАСЕНИЯ */
-        .stories-section { padding: 80px 0; }
-        .stories-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-        }
-        .story-card {
-            background-color: var(--color-white);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            padding: 36px 32px;
-            border-top: 5px solid transparent;
-        }
-        .story-card:nth-child(1) { border-top-color: var(--color-blue); }
-        .story-card:nth-child(2) { border-top-color: var(--color-green); }
-        .story-card:nth-child(3) { border-top-color: var(--color-sand); }
-        .story-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-        .story-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-        .story-card:nth-child(1) .story-icon { background-color: var(--color-blue-light); color: var(--color-blue-dark); }
-        .story-card:nth-child(2) .story-icon { background-color: var(--color-green-light); color: var(--color-dark-green); }
-        .story-card:nth-child(3) .story-icon { background-color: var(--color-sand-light); color: var(--color-sand-dark); }
-
-        .story-content h3 { font-size: 24px; margin-bottom: 8px; }
-        .story-meta {
-            font-size: 13px;
-            color: var(--color-muted);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .story-meta .dot {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background-color: var(--color-green);
-        }
-        .story-content p {
-            font-size: 15px;
-            color: var(--color-text-light);
-            line-height: 1.8;
-            margin: 0;
-        }
-
-        /* ЧТО МЫ ДЕЛАЕМ */
-        .work-section {
-            padding: 80px 0;
-            background-color: var(--color-bg-alt);
-        }
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-        .work-card {
-            background-color: var(--color-white);
-            border-radius: var(--radius-lg);
-            text-align: left;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            padding: 36px 32px;
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
-        .work-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-        }
-        .work-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            flex-shrink: 0;
-        }
-        .work-icon.blue { background-color: var(--color-blue-light); color: var(--color-blue-dark); }
-        .work-icon.green { background-color: var(--color-green-light); color: var(--color-dark-green); }
-        .work-icon.sand { background-color: var(--color-sand-light); color: var(--color-sand-dark); }
-        .work-icon.dark { background-color: var(--color-bg); color: var(--color-dark-green); }
-        .work-card h4 { font-size: 20px; margin-bottom: 8px; }
-        .work-card p { font-size: 14.5px; color: var(--color-text-light); margin: 0; line-height: 1.7; }
-
-        /* СТАТИСТИКА */
-        .stats-section {
-            padding: 0;
-            position: relative;
-            overflow: hidden;
-            margin: 80px auto;
-            max-width: 1200px;
-            border-radius: var(--radius-xl);
-        }
-        .stats-bg {
-            position: relative;
-            padding: 100px 48px;
-            background: linear-gradient(135deg, var(--color-dark-green) 0%, #3a5735 100%);
-        }
-        .stats-bg::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(150, 184, 228, 0.3) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .stats-bg::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(233, 196, 142, 0.25) 0%, transparent 70%);
-            border-radius: 50%;
-        }
+        .stats-section { position: relative; overflow: hidden; margin: 80px auto; max-width: 1200px; border-radius: var(--radius-xl); }
+        .stats-bg { position: relative; padding: 100px 48px; background: linear-gradient(135deg, var(--color-dark-green) 0%, #3a5735 100%); border-radius: var(--radius-xl); }
+        .stats-bg::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(150, 184, 228, 0.3) 0%, transparent 70%); border-radius: 50%; }
+        .stats-bg::after { content: ''; position: absolute; bottom: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(233, 196, 142, 0.25) 0%, transparent 70%); border-radius: 50%; }
         .stats-bg .container { position: relative; z-index: 2; }
         .stats-bg .eyebrow { color: var(--color-sand); }
         .stats-bg .section-title { color: var(--color-white); }
         .stats-bg .section-subtitle { color: rgba(255,255,255,0.75); }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-        .stat-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: var(--radius-lg);
-            padding: 40px 24px;
-            text-align: center;
-            transition: var(--transition);
-            border-top: 4px solid transparent;
-        }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .stat-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: var(--radius-lg); padding: 40px 24px; text-align: center; transition: var(--transition); border-top: 4px solid transparent; }
         .stat-card:nth-child(1) { border-top-color: var(--color-blue); }
         .stat-card:nth-child(2) { border-top-color: var(--color-green); }
         .stat-card:nth-child(3) { border-top-color: var(--color-sand); }
         .stat-card:nth-child(4) { border-top-color: var(--color-white); }
-        .stat-card:hover {
-            transform: translateY(-6px);
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-        .stat-card .num {
-            font-family: var(--font-heading);
-            font-size: 48px;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 12px;
-            color: var(--color-white);
-        }
-        .stat-card .label {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.75);
-            line-height: 1.5;
-        }
+        .stat-card:hover { transform: translateY(-6px); background: rgba(255, 255, 255, 0.15); }
+        .stat-card .num { font-family: var(--font-heading); font-size: 48px; font-weight: 700; line-height: 1; margin-bottom: 12px; color: var(--color-white); }
+        .stat-card .label { font-size: 13px; color: rgba(255, 255, 255, 0.75); line-height: 1.5; }
 
-        /* ЦИТАТА */
-        .quote-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--color-dark-green) 0%, #3a5735 100%);
-            border-radius: var(--radius-xl);
-            margin: 0 auto 80px;
-            max-width: 1200px;
-            position: relative;
-            overflow: hidden;
-        }
-        .quote-section::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(150, 184, 228, 0.35) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .quote-section::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(233, 196, 142, 0.3) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .quote-section .container { position: relative; z-index: 2; }
-        .quote-inner {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .quote-icon { font-size: 56px; color: var(--color-green); margin-bottom: 24px; opacity: 0.6; }
-        .quote-text {
-            font-family: var(--font-heading);
-            font-size: 28px;
-            font-style: italic;
-            color: var(--color-white);
-            line-height: 1.5;
-            margin-bottom: 40px;
-            font-weight: 400;
-        }
-        .quote-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-        }
-        .quote-author-avatar {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background-color: var(--color-green);
-            color: var(--color-dark-green);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-heading);
-            font-size: 24px;
-            font-weight: 700;
-            flex-shrink: 0;
-            border: 3px solid var(--color-green);
-        }
-        .quote-author-text { text-align: left; }
-        .quote-author-name {
-            font-family: var(--font-heading);
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--color-white);
-            margin-bottom: 2px;
-        }
-        .quote-author-role { font-size: 13px; color: var(--color-green); margin: 0; font-weight: 500; }
-
-        /* КОМАНДА */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-        .team-card {
-            background-color: var(--color-white);
-            border-radius: var(--radius-lg);
-            padding: 36px 24px;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border-top: 4px solid transparent;
-        }
+        .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .team-card { background: var(--color-white); border-radius: var(--radius-lg); padding: 36px 24px; text-align: center; box-shadow: var(--shadow-sm); transition: var(--transition); border-top: 4px solid transparent; }
         .team-card:nth-child(1) { border-top-color: var(--color-blue); }
         .team-card:nth-child(2) { border-top-color: var(--color-green); }
         .team-card:nth-child(3) { border-top-color: var(--color-sand); }
         .team-card:nth-child(4) { border-top-color: var(--color-dark-green); }
         .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-        .team-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-heading);
-            font-size: 34px;
-            font-weight: 700;
-            border: 4px solid var(--color-white);
-            box-shadow: var(--shadow-md);
-        }
-        .team-card:nth-child(1) .team-avatar { background-color: var(--color-blue-light); color: var(--color-blue-dark); }
-        .team-card:nth-child(2) .team-avatar { background-color: var(--color-green-light); color: var(--color-dark-green); }
-        .team-card:nth-child(3) .team-avatar { background-color: var(--color-sand-light); color: var(--color-sand-dark); }
-        .team-card:nth-child(4) .team-avatar { background-color: var(--color-bg-alt); color: var(--color-dark-green); }
-
+        .team-avatar { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 34px; font-weight: 700; border: 4px solid var(--color-white); box-shadow: var(--shadow-md); }
+        .team-card:nth-child(1) .team-avatar { background: var(--color-blue-light); color: var(--color-blue-dark); }
+        .team-card:nth-child(2) .team-avatar { background: var(--color-green-light); color: var(--color-dark-green); }
+        .team-card:nth-child(3) .team-avatar { background: var(--color-sand-light); color: var(--color-sand-dark); }
+        .team-card:nth-child(4) .team-avatar { background: var(--color-bg-alt); color: var(--color-dark-green); }
         .team-card h4 { font-size: 18px; margin-bottom: 4px; }
-        .team-role {
-            font-size: 13px;
-            color: var(--color-blue-dark);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
+        .team-role { font-size: 13px; color: var(--color-blue-dark); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
         .team-card p { font-size: 13.5px; color: var(--color-text-light); margin: 0; }
 
-        /* КАК ПРИСОЕДИНИТЬСЯ */
-        .join-section {
-            padding: 80px 0;
-            background-color: var(--color-bg-alt);
-        }
-        .join-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-        .join-card {
-            background-color: var(--color-white);
-            border-radius: var(--radius-lg);
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border: 2px solid transparent;
-            padding: 40px 32px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        .join-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--color-green);
-        }
-        .join-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 32px;
-        }
-        .join-icon.blue { background-color: var(--color-blue-light); color: var(--color-blue-dark); }
-        .join-icon.green { background-color: var(--color-green-light); color: var(--color-dark-green); }
-        .join-icon.sand { background-color: var(--color-sand-light); color: var(--color-sand-dark); }
-        .join-card h3 { font-size: 22px; margin-bottom: 12px; }
-        .join-card p { font-size: 14.5px; color: var(--color-text-light); margin-bottom: 24px; flex-grow: 1; }
-        .btn-join {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 14px;
-            transition: var(--transition);
-            cursor: pointer;
-            border: 2px solid;
-            margin: 0 auto;
-        }
-        .btn-join.blue { background-color: var(--color-blue); border-color: var(--color-blue); color: var(--color-white); }
-        .btn-join.blue:hover { background-color: var(--color-blue-dark); border-color: var(--color-blue-dark); color: var(--color-white); transform: translateY(-2px); box-shadow: var(--shadow-blue); }
-        .btn-join.green { background-color: var(--color-green); border-color: var(--color-green); color: var(--color-dark-green); }
-        .btn-join.green:hover { background-color: var(--color-green-dark); border-color: var(--color-green-dark); color: var(--color-white); transform: translateY(-2px); box-shadow: var(--shadow-green); }
-        .btn-join.sand { background-color: var(--color-sand); border-color: var(--color-sand); color: var(--color-dark-green); }
-        .btn-join.sand:hover { background-color: var(--color-sand-dark); border-color: var(--color-sand-dark); color: var(--color-white); transform: translateY(-2px); box-shadow: var(--shadow-sand); }
-
-        /* ФУТЕР */
-        .footer-custom {
-            background-color: var(--color-white);
-            padding: 60px 0 30px;
-            border-top: 1px solid var(--color-border-light);
-            text-align: center;
-        }
-        .footer-custom p { font-size: 13px; color: var(--color-muted); }
-
-        /* АДАПТИВ */
-        @media (max-width: 1199px) {
-            .timeline-horizontal { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        @media (max-width: 991px) {
+            .mission-grid, .stats-grid, .team-grid { grid-template-columns: 1fr 1fr; }
+            .timeline-horizontal { grid-template-columns: 1fr 1fr; gap: 40px; }
             .timeline-horizontal::before { display: none; }
         }
-        @media (max-width: 991px) {
-            .page-title { font-size: 40px; }
-            .section-title { font-size: 32px; }
-            .mission-grid { grid-template-columns: 1fr; }
-            .stories-grid { grid-template-columns: 1fr; }
-            .team-grid { grid-template-columns: repeat(2, 1fr); }
-            .work-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .join-grid { grid-template-columns: 1fr; }
-        }
         @media (max-width: 767px) {
-            .page-title { font-size: 30px; }
-            .section-title { font-size: 26px; }
-            .team-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .timeline-horizontal { grid-template-columns: 1fr; gap: 32px; }
-            .timeline-year-big { font-size: 56px; }
-            .quote-text { font-size: 20px; }
-            .quote-author { flex-direction: column; text-align: center; }
-            .quote-author-text { text-align: center; }
+            .mission-grid, .stats-grid, .team-grid, .timeline-horizontal { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ШАПКА -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
             <a class="navbar-brand-custom" href="index.html">
                 <div class="brand-mark"><i class="fa-solid fa-paw"></i></div>
-                <div class="brand-text">
-                    Лапа Помощи
-                    <small>Приют для животных</small>
-                </div>
+                <div class="brand-text">Лапа Помощи<small>Приют для животных</small></div>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <i class="fa-solid fa-bars" style="color: var(--color-dark-green); font-size: 20px;"></i>
@@ -766,12 +107,13 @@
             </div>
             <a class="btn-login d-none d-lg-inline-flex" href="account.html">
                 <i class="fa-regular fa-user"></i> Кабинет
+                <span class="fav-counter" id="favCounter">0</span>
             </a>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="page-header">
+    <!-- ГРАДИЕНТНЫЙ БАННЕР -->
+    <section class="page-header-gradient">
         <div class="container">
             <span class="eyebrow">О приюте</span>
             <h1 class="page-title">Мы меняем жизни с 2021 года</h1>
@@ -784,7 +126,6 @@
         <span class="eyebrow green">Наша миссия</span>
         <h2 class="section-title">Что для нас важно</h2>
         <p class="section-subtitle">Три главных принципа, на которых строится вся наша работа</p>
-
         <div class="mission-grid">
             <div class="mission-card">
                 <div class="mission-icon blue"><i class="fa-solid fa-heart"></i></div>
@@ -804,138 +145,32 @@
         </div>
     </section>
 
-    <!-- ТАЙМЛАЙН ГОРИЗОНТАЛЬНЫЙ -->
+    <!-- ТАЙМЛАЙН -->
     <section class="timeline-section">
         <div class="container">
             <span class="eyebrow">Наша история</span>
             <h2 class="section-title">Путь длиной в 5 лет</h2>
             <p class="section-subtitle">От маленькой инициативы до крупного приюта, который спас сотни жизней</p>
-
             <div class="timeline-horizontal">
                 <div class="timeline-card">
                     <div class="timeline-year-big">2021</div>
                     <div class="timeline-dot"></div>
-                    <div class="timeline-card-content">
-                        <h4>Начало пути</h4>
-                        <p>Пять волонтёров объединились, чтобы помочь бездомным животным. Первый приют открылся в небольшом помещении.</p>
-                    </div>
+                    <div class="timeline-card-content"><h4>Начало пути</h4><p>Пять волонтёров объединились, чтобы помочь бездомным животным.</p></div>
                 </div>
-
                 <div class="timeline-card">
                     <div class="timeline-year-big">2022</div>
                     <div class="timeline-dot"></div>
-                    <div class="timeline-card-content">
-                        <h4>Первые 100 спасений</h4>
-                        <p>Мы спасли 100 животных, нашли дом для 60 из них и запустили программу стерилизации уличных кошек.</p>
-                    </div>
+                    <div class="timeline-card-content"><h4>Первые 100 спасений</h4><p>Мы спасли 100 животных, нашли дом для 60 из них.</p></div>
                 </div>
-
                 <div class="timeline-card">
                     <div class="timeline-year-big">2024</div>
                     <div class="timeline-dot"></div>
-                    <div class="timeline-card-content">
-                        <h4>Новое здание и команда</h4>
-                        <p>Переехали в просторное здание на ул. Доброй. К нам присоединились 30 новых волонтёров и два ветеринара.</p>
-                    </div>
+                    <div class="timeline-card-content"><h4>Новое здание и команда</h4><p>Переехали в просторное здание в Сыктывкаре.</p></div>
                 </div>
-
                 <div class="timeline-card">
                     <div class="timeline-year-big">2026</div>
                     <div class="timeline-dot"></div>
-                    <div class="timeline-card-content">
-                        <h4>500+ спасённых жизней</h4>
-                        <p>Сегодня в приюте живут более 200 питомцев. Мы продолжаем искать дом для каждого.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ИСТОРИИ СПАСЕНИЯ -->
-    <section class="stories-section">
-        <div class="container">
-            <span class="eyebrow sand">Истории спасения</span>
-            <h2 class="section-title">Их судьбы изменились</h2>
-            <p class="section-subtitle">Три истории питомцев, которые нашли новый дом благодаря вам</p>
-
-            <div class="stories-grid">
-                <div class="story-card">
-                    <div class="story-icon"><i class="fa-solid fa-dog"></i></div>
-                    <div class="story-content">
-                        <h3>Бим</h3>
-                        <div class="story-meta">
-                            <span>Найден на улице</span>
-                            <span class="dot"></span>
-                            <span>2023</span>
-                        </div>
-                        <p>Бима нашли зимой на остановке — худого, испуганного, с обмороженными лапами. Волонтёры выходили его, сделали операцию и нашли любящую семью. Сейчас Бим живёт в частном доме и обожает бегать по утрам.</p>
-                    </div>
-                </div>
-
-                <div class="story-card">
-                    <div class="story-icon"><i class="fa-solid fa-cat"></i></div>
-                    <div class="story-content">
-                        <h3>Мурка</h3>
-                        <div class="story-meta">
-                            <span>Спасена из подвала</span>
-                            <span class="dot"></span>
-                            <span>2024</span>
-                        </div>
-                        <p>Мурку нашли в подвале жилого дома вместе с котятами. Она была истощена, но продолжала защищать своих детей. Всех котят пристроили, а Мурка теперь живёт в семье с двумя детьми и спит на подушке хозяйки.</p>
-                    </div>
-                </div>
-
-                <div class="story-card">
-                    <div class="story-icon"><i class="fa-solid fa-paw"></i></div>
-                    <div class="story-content">
-                        <h3>Тимка</h3>
-                        <div class="story-meta">
-                            <span>Найден в коробке</span>
-                            <span class="dot"></span>
-                            <span>2025</span>
-                        </div>
-                        <p>Тимку подбросили в коробке к дверям приюта — ему было всего 3 недели. Волонтёры выкармливали его из бутылочки каждые 2 часа. Сегодня Тимка — активный и весёлый щенок, который ищет свою семью.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ЧТО МЫ ДЕЛАЕМ -->
-    <section class="work-section">
-        <div class="container">
-            <span class="eyebrow">Наша работа</span>
-            <h2 class="section-title">Чем занимается приют</h2>
-            <p class="section-subtitle">Полный цикл помощи — от спасения до передачи в новую семью</p>
-
-            <div class="work-grid">
-                <div class="work-card">
-                    <div class="work-icon blue"><i class="fa-solid fa-truck-medical"></i></div>
-                    <div>
-                        <h4>Спасение и лечение</h4>
-                        <p>Забираем животных с улиц, из неблагополучных условий, лечим травмы и болезни, проводим вакцинацию и стерилизацию.</p>
-                    </div>
-                </div>
-                <div class="work-card">
-                    <div class="work-icon green"><i class="fa-solid fa-house-chimney"></i></div>
-                    <div>
-                        <h4>Поиск нового дома</h4>
-                        <p>Публикуем анкеты питомцев, проводим собеседования с потенциальными хозяевами и организуем встречи.</p>
-                    </div>
-                </div>
-                <div class="work-card">
-                    <div class="work-icon sand"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <div>
-                        <h4>Просвещение</h4>
-                        <p>Рассказываем о правильном уходе за животными, проводим дни открытых дверей и работаем со школами.</p>
-                    </div>
-                </div>
-                <div class="work-card">
-                    <div class="work-icon dark"><i class="fa-solid fa-hand-holding-heart"></i></div>
-                    <div>
-                        <h4>Поддержка после усыновления</h4>
-                        <p>Остаёмся на связи с новыми хозяевами, помогаем советами и консультируем по вопросам здоровья питомца.</p>
-                    </div>
+                    <div class="timeline-card-content"><h4>500+ спасённых жизней</h4><p>Сегодня в приюте живут более 200 питомцев.</p></div>
                 </div>
             </div>
         </div>
@@ -948,41 +183,11 @@
                 <span class="eyebrow">Цифры</span>
                 <h2 class="section-title">Наши результаты</h2>
                 <p class="section-subtitle">За пять лет работы мы многого добились вместе с вами</p>
-
                 <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="num">500+</div>
-                        <div class="label">Спасённых животных с 2021 года</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="num">124</div>
-                        <div class="label">Нашли дом в 2026 году</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="num">200+</div>
-                        <div class="label">Питомцев сейчас в приюте</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="num">50+</div>
-                        <div class="label">Волонтёров и кураторов</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ЦИТАТА -->
-    <section class="quote-section">
-        <div class="container">
-            <div class="quote-inner">
-                <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-                <div class="quote-text">Каждое спасённое животное — это не просто цифра. Это чья-то жизнь, которую мы вместе с вами подарили заново. И я верю, что добро возвращается.</div>
-                <div class="quote-author">
-                    <div class="quote-author-avatar">АК</div>
-                    <div class="quote-author-text">
-                        <div class="quote-author-name">Анна Ковалёва</div>
-                        <p class="quote-author-role">Основатель приюта «Лапа Помощи»</p>
-                    </div>
+                    <div class="stat-card"><div class="num">500+</div><div class="label">Спасённых животных</div></div>
+                    <div class="stat-card"><div class="num">124</div><div class="label">Нашли дом в 2026 году</div></div>
+                    <div class="stat-card"><div class="num">200+</div><div class="label">Питомцев сейчас в приюте</div></div>
+                    <div class="stat-card"><div class="num">50+</div><div class="label">Волонтёров и кураторов</div></div>
                 </div>
             </div>
         </div>
@@ -993,78 +198,24 @@
         <span class="eyebrow">Наша команда</span>
         <h2 class="section-title">Люди, которые помогают</h2>
         <p class="section-subtitle">Волонтёры, ветеринары и кураторы — те, кто каждый день рядом с животными</p>
-
         <div class="team-grid">
-            <div class="team-card">
-                <div class="team-avatar">АК</div>
-                <h4>Анна Ковалёва</h4>
-                <div class="team-role">Основатель</div>
-                <p>Создала приют в 2021 году, курирует все ключевые направления работы</p>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar">ДЛ</div>
-                <h4>Дмитрий Лебедев</h4>
-                <div class="team-role">Ветеринар</div>
-                <p>Проводит осмотры, операции и вакцинацию, следит за здоровьем всех питомцев</p>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar">МП</div>
-                <h4>Мария Петрова</h4>
-                <div class="team-role">Куратор усыновления</div>
-                <p>Общается с потенциальными хозяевами, проводит собеседования и встречи</p>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar">СИ</div>
-                <h4>Сергей Иванов</h4>
-                <div class="team-role">Волонтёр</div>
-                <p>Помогает с выгулом, кормлением, уборкой и транспортировкой животных</p>
-            </div>
+            <div class="team-card"><div class="team-avatar">АК</div><h4>Анна Ковалёва</h4><div class="team-role">Основатель</div><p>Создала приют в 2021 году, курирует все ключевые направления</p></div>
+            <div class="team-card"><div class="team-avatar">ДЛ</div><h4>Дмитрий Лебедев</h4><div class="team-role">Ветеринар</div><p>Проводит осмотры, операции и вакцинацию</p></div>
+            <div class="team-card"><div class="team-avatar">МП</div><h4>Мария Петрова</h4><div class="team-role">Куратор усыновления</div><p>Общается с потенциальными хозяевами</p></div>
+            <div class="team-card"><div class="team-avatar">СИ</div><h4>Сергей Иванов</h4><div class="team-role">Волонтёр</div><p>Помогает с выгулом, кормлением и уборкой</p></div>
         </div>
     </section>
 
-    <!-- КАК ПРИСОЕДИНИТЬСЯ -->
-    <section class="join-section">
-        <div class="container">
-            <span class="eyebrow green">Присоединяйтесь</span>
-            <h2 class="section-title">Как помочь приюту</h2>
-            <p class="section-subtitle">Три простых способа сделать доброе дело прямо сейчас</p>
-
-            <div class="join-grid">
-                <div class="join-card">
-                    <div class="join-icon blue"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-                    <h3>Пожертвовать</h3>
-                    <p>Любая сумма поможет нам кормить, лечить и содержать животных. Даже 100 рублей — это корм для одного питомца на день.</p>
-                    <a href="donate.html" class="btn-join blue">
-                        <i class="fa-solid fa-heart"></i> Поддержать
-                    </a>
-                </div>
-                <div class="join-card">
-                    <div class="join-icon green"><i class="fa-solid fa-hands-holding-child"></i></div>
-                    <h3>Стать волонтёром</h3>
-                    <p>Помогайте с выгулом, уборкой, фотосессиями для питомцев или транспортировкой. Мы рады любой помощи.</p>
-                    <a href="contacts.html" class="btn-join green">
-                        <i class="fa-solid fa-user-plus"></i> Написать нам
-                    </a>
-                </div>
-                <div class="join-card">
-                    <div class="join-icon sand"><i class="fa-solid fa-paw"></i></div>
-                    <h3>Забрать питомца</h3>
-                    <p>Подарите дом тому, кто его ждёт. В нашем каталоге более 200 собак и кошек, готовых к переезду.</p>
-                    <a href="catalog.html" class="btn-join sand">
-                        <i class="fa-solid fa-arrow-right"></i> В каталог
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ФУТЕР -->
     <footer class="footer-custom">
         <div class="container">
-            <p>&copy; 2026 Приют «Лапа Помощи». Все права защищены.</p>
+            <div class="copyright-custom" style="margin-top: 0; border: none; padding-top: 0;">
+                &copy; 2026 Приют «Лапа Помощи». Все права защищены.
+                <a href="admin.html" class="admin-link"><i class="fa-solid fa-lock" style="font-size: 10px;"></i> Вход для сотрудников</a>
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/common.js"></script>
 </body>
 </html>

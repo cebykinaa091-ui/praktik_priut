@@ -4,457 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Помощь приюту — Лапа Помощи</title>
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        :root {
-            --color-blue: #96B8E4;
-            --color-green: #9ECD41;
-            --color-dark-green: #466840;
-            --color-sand: #E9C48E;
-            --color-blue-dark: #7A9DD0;
-            --color-blue-light: #D6E4F5;
-            --color-green-light: #E8F4D0;
-            --color-sand-light: #F7E7CD;
-            --color-sand-dark: #D4A96A;
-            --color-bg: #F7F4F0;
-            --color-bg-alt: #EFEAE4;
-            --color-white: #FFFFFF;
-            --color-text: #2C2C2C;
-            --color-text-light: #6B6B6B;
-            --color-muted: #9A9A9A;
-            --color-border: rgba(70, 104, 64, 0.12);
-            --color-border-light: rgba(70, 104, 64, 0.08);
-            
-            --font-heading: 'Lora', serif;
-            --font-body: 'Inter', sans-serif;
-            
-            --radius-xl: 40px;
-            --radius-lg: 28px;
-            --radius-md: 20px;
-            --radius-sm: 14px;
-            
-            --shadow-sm: 0 2px 8px rgba(70, 104, 64, 0.04);
-            --shadow-md: 0 8px 32px rgba(70, 104, 64, 0.06);
-            --shadow-lg: 0 20px 60px rgba(70, 104, 64, 0.1);
-            --shadow-sand: 0 20px 60px rgba(233, 196, 142, 0.35);
-            
-            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        * { box-sizing: border-box; }
-        body {
-            font-family: var(--font-body);
-            background-color: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.7;
-            text-align: center;
-            -webkit-font-smoothing: antialiased;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-            color: var(--color-dark-green);
-            font-weight: 600;
-        }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        .eyebrow {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--color-blue-dark);
-            margin-bottom: 16px;
-        }
-
-        .navbar-custom {
-            background-color: rgba(247, 244, 240, 0.9);
-            backdrop-filter: blur(20px);
-            padding: 18px 0;
-            border-bottom: 1px solid var(--color-border-light);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .navbar-brand-custom {
-            font-family: var(--font-heading);
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--color-dark-green);
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .brand-mark {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            background-color: var(--color-dark-green);
-            color: var(--color-green);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-        .brand-text small {
-            display: block;
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--color-muted);
-            margin-top: 4px;
-        }
-        .nav-link-custom {
-            font-weight: 500;
-            font-size: 14.5px;
-            color: var(--color-text);
-            padding: 8px 0;
-            margin: 0 18px;
-        }
-        .nav-link-custom:hover { color: var(--color-blue-dark); }
-        .nav-link-custom.active { color: var(--color-dark-green); }
-        .nav-link-custom.active::after {
-            content: '';
-            display: block;
-            height: 2px;
-            background-color: var(--color-blue);
-            margin-top: 6px;
-        }
-        .btn-login {
-            background-color: var(--color-dark-green);
-            color: var(--color-white);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 13.5px;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-login:hover { background-color: var(--color-blue); color: var(--color-white); }
-
-        .page-header { padding: 80px 0 40px; }
-        .page-title { font-size: 56px; margin-bottom: 20px; line-height: 1.1; }
-        .page-subtitle {
-            font-size: 17px;
-            color: var(--color-text-light);
-            max-width: 620px;
-            margin: 0 auto;
-        }
-
-        /* ================= БОЛЬШОЙ БЛОК ПОЖЕРТВОВАНИЯ ================= */
-        .donation-section { padding: 40px 0 80px; }
-
-        .donation-wrapper {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 32px;
-            align-items: stretch;
-            text-align: left;
-        }
-
-        /* Левая часть — форма */
-        .donation-card {
-            background-color: var(--color-white);
-            border-radius: var(--radius-xl);
-            padding: 56px 48px;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .donation-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--color-blue) 0%, var(--color-green) 33%, var(--color-sand) 66%, var(--color-dark-green) 100%);
-        }
-
-        .donation-card h2 {
-            font-size: 34px;
-            margin-bottom: 8px;
-            text-align: center;
-        }
-        .donation-subtitle {
-            font-size: 15px;
-            color: var(--color-muted);
-            text-align: center;
-            margin-bottom: 36px;
-        }
-
-        .amounts-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        .amount-btn {
-            padding: 20px 12px;
-            border-radius: var(--radius-sm);
-            border: 1.5px solid var(--color-border);
-            background-color: var(--color-bg);
-            font-family: var(--font-body);
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--color-dark-green);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .amount-btn:hover, .amount-btn.active {
-            background-color: var(--color-sand);
-            border-color: var(--color-sand);
-            color: var(--color-dark-green);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-sand);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
+        .donation-wrapper { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: stretch; text-align: left; }
+        .donation-card { background: var(--color-white); border-radius: var(--radius-xl); padding: 56px 48px; box-shadow: var(--shadow-lg); position: relative; overflow: hidden; display: flex; flex-direction: column; }
+        .donation-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--color-blue) 0%, var(--color-green) 33%, var(--color-sand) 66%, var(--color-dark-green) 100%); }
+        .donation-card h2 { font-size: 34px; margin-bottom: 8px; text-align: center; }
+        .donation-subtitle { font-size: 15px; color: var(--color-muted); text-align: center; margin-bottom: 36px; }
+        .amounts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+        .amount-btn { padding: 20px 12px; border-radius: var(--radius-sm); border: 1.5px solid var(--color-border); background: var(--color-bg); font-family: var(--font-body); font-size: 17px; font-weight: 700; color: var(--color-dark-green); cursor: pointer; transition: var(--transition); }
+        .amount-btn:hover, .amount-btn.active { background: var(--color-sand); border-color: var(--color-sand); transform: translateY(-3px); box-shadow: var(--shadow-sand); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .form-group { margin-bottom: 20px; }
-        .form-label {
-            display: block;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--color-dark-green);
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 8px;
-        }
-        .form-input, .form-textarea {
-            width: 100%;
-            padding: 14px 18px;
-            border-radius: var(--radius-sm);
-            border: 1.5px solid var(--color-border);
-            background-color: var(--color-bg);
-            font-family: var(--font-body);
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--color-text);
-            transition: var(--transition);
-            outline: none;
-        }
-        .form-input:focus, .form-textarea:focus {
-            border-color: var(--color-blue);
-            background-color: var(--color-white);
-            box-shadow: 0 0 0 4px rgba(150, 184, 228, 0.15);
-        }
+        .form-label { display: block; font-size: 12px; font-weight: 700; color: var(--color-dark-green); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 8px; }
+        .form-input, .form-textarea { width: 100%; padding: 14px 18px; border-radius: var(--radius-sm); border: 1.5px solid var(--color-border); background: var(--color-bg); font-family: var(--font-body); font-size: 14px; font-weight: 500; color: var(--color-text); transition: var(--transition); outline: none; }
+        .form-input:focus, .form-textarea:focus { border-color: var(--color-blue); background: var(--color-white); box-shadow: 0 0 0 4px rgba(150, 184, 228, 0.15); }
         .form-textarea { resize: vertical; min-height: 100px; }
+        .btn-submit { width: 100%; padding: 20px; border-radius: 50px; border: none; background: var(--color-sand); color: var(--color-dark-green); font-family: var(--font-body); font-size: 17px; font-weight: 700; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 8px; }
+        .btn-submit:hover { background: var(--color-sand-dark); color: var(--color-white); transform: translateY(-3px); box-shadow: var(--shadow-sand); }
 
-        .btn-submit {
-            width: 100%;
-            padding: 20px;
-            border-radius: 50px;
-            border: none;
-            background-color: var(--color-sand);
-            color: var(--color-dark-green);
-            font-family: var(--font-body);
-            font-size: 17px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 8px;
-        }
-        .btn-submit:hover {
-            background-color: var(--color-sand-dark);
-            color: var(--color-white);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-sand);
-        }
-
-        /* Правая часть — информация */
-        .donation-info {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .info-card {
-            background-color: var(--color-white);
-            border-radius: var(--radius-lg);
-            padding: 28px;
-            box-shadow: var(--shadow-sm);
-            text-align: left;
-            border-left: 5px solid transparent;
-            transition: var(--transition);
-            flex: 1;
-        }
-        .info-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
+        .donation-info { display: flex; flex-direction: column; gap: 20px; }
+        .info-card { background: var(--color-white); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-sm); text-align: left; border-left: 5px solid transparent; transition: var(--transition); flex: 1; }
+        .info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
         .info-card:nth-child(1) { border-left-color: var(--color-blue); }
         .info-card:nth-child(2) { border-left-color: var(--color-green); }
         .info-card:nth-child(3) { border-left-color: var(--color-sand); }
+        .info-card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+        .info-icon { width: 52px; height: 52px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+        .info-icon.blue { background: var(--color-blue-light); color: var(--color-blue-dark); }
+        .info-icon.green { background: var(--color-green-light); color: var(--color-dark-green); }
+        .info-icon.sand { background: var(--color-sand-light); color: var(--color-sand-dark); }
+        .info-card h4 { font-size: 18px; margin: 0; font-family: var(--font-heading); }
+        .info-card p { font-size: 14px; color: var(--color-text-light); margin: 0; line-height: 1.6; }
 
-        .info-card-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 12px;
-        }
-        .info-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            flex-shrink: 0;
-        }
-        .info-icon.blue { background-color: var(--color-blue-light); color: var(--color-blue-dark); }
-        .info-icon.green { background-color: var(--color-green-light); color: var(--color-dark-green); }
-        .info-icon.sand { background-color: var(--color-sand-light); color: var(--color-sand-dark); }
-
-        .info-card h4 {
-            font-size: 18px;
-            margin: 0;
-            font-family: var(--font-heading);
-        }
-        .info-card p {
-            font-size: 14px;
-            color: var(--color-text-light);
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        /* Итоговая сумма */
-        .total-block {
-            background: linear-gradient(135deg, var(--color-dark-green) 0%, #3a5735 100%);
-            border-radius: var(--radius-lg);
-            padding: 28px;
-            color: var(--color-white);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-        }
-        .total-block::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            right: -60px;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(150, 184, 228, 0.3) 0%, transparent 70%);
-            border-radius: 50%;
-        }
+        .total-block { background: linear-gradient(135deg, var(--color-dark-green) 0%, #3a5735 100%); border-radius: var(--radius-lg); padding: 28px; color: var(--color-white); text-align: center; position: relative; overflow: hidden; box-shadow: var(--shadow-md); }
+        .total-block::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(150, 184, 228, 0.3) 0%, transparent 70%); border-radius: 50%; }
         .total-block > * { position: relative; z-index: 2; }
-        .total-block .label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--color-sand);
-            margin-bottom: 8px;
-        }
-        .total-block .value {
-            font-family: var(--font-heading);
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--color-white);
-            line-height: 1;
-        }
-        .total-block .value span {
-            font-size: 22px;
-            font-weight: 500;
-            opacity: 0.7;
-        }
+        .total-block .label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--color-sand); margin-bottom: 8px; }
+        .total-block .value { font-family: var(--font-heading); font-size: 42px; font-weight: 700; color: var(--color-white); line-height: 1; }
+        .total-block .value span { font-size: 22px; font-weight: 500; opacity: 0.7; }
 
-        /* ================= ДОПОЛНИТЕЛЬНЫЙ БЛОК ================= */
-        .impact-section {
-            padding: 80px 0;
-            background-color: var(--color-bg-alt);
-            position: relative;
-            overflow: hidden;
-        }
-        .impact-section::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(158, 205, 65, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .impact-section .container { position: relative; z-index: 1; }
-        .impact-title {
-            font-size: 38px;
-            margin-bottom: 16px;
-        }
-        .impact-subtitle {
-            font-size: 16px;
-            color: var(--color-text-light);
-            max-width: 560px;
-            margin: 0 auto 56px;
-        }
-
-        .impact-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-        .impact-card {
-            background-color: var(--color-white);
-            border-radius: var(--radius-md);
-            padding: 32px 24px;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border-top: 4px solid transparent;
-        }
+        .impact-section { padding: 80px 0; background: var(--color-bg-alt); position: relative; overflow: hidden; }
+        .impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .impact-card { background: var(--color-white); border-radius: var(--radius-md); padding: 32px 24px; text-align: center; box-shadow: var(--shadow-sm); transition: var(--transition); border-top: 4px solid transparent; }
         .impact-card:nth-child(1) { border-top-color: var(--color-blue); }
         .impact-card:nth-child(2) { border-top-color: var(--color-green); }
         .impact-card:nth-child(3) { border-top-color: var(--color-sand); }
         .impact-card:nth-child(4) { border-top-color: var(--color-dark-green); }
-        .impact-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-        }
-        .impact-card .num {
-            font-family: var(--font-heading);
-            font-size: 42px;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 12px;
-        }
+        .impact-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .impact-card .num { font-family: var(--font-heading); font-size: 42px; font-weight: 700; line-height: 1; margin-bottom: 12px; }
         .impact-card:nth-child(1) .num { color: var(--color-blue-dark); }
         .impact-card:nth-child(2) .num { color: var(--color-green-dark); }
         .impact-card:nth-child(3) .num { color: var(--color-sand-dark); }
         .impact-card:nth-child(4) .num { color: var(--color-dark-green); }
-        .impact-card .label {
-            font-size: 13px;
-            color: var(--color-text-light);
-            line-height: 1.5;
-        }
+        .impact-card .label { font-size: 13px; color: var(--color-text-light); line-height: 1.5; }
 
-        .footer-custom {
-            background-color: var(--color-white);
-            padding: 60px 0 30px;
-            border-top: 1px solid var(--color-border-light);
-            text-align: center;
-            margin-top: 80px;
-        }
-        .footer-custom p { font-size: 13px; color: var(--color-muted); }
-
-        /* ================= АДАПТИВ ================= */
         @media (max-width: 1199px) {
             .donation-wrapper { grid-template-columns: 1fr; }
             .donation-info { flex-direction: row; flex-wrap: wrap; }
@@ -462,12 +69,10 @@
             .total-block { flex: 1 1 100%; }
         }
         @media (max-width: 991px) {
-            .page-title { font-size: 40px; }
             .donation-card { padding: 40px 32px; }
             .impact-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 767px) {
-            .page-title { font-size: 30px; }
             .donation-card { padding: 32px 24px; }
             .amounts-grid { grid-template-columns: repeat(2, 1fr); }
             .form-row { grid-template-columns: 1fr; }
@@ -483,10 +88,7 @@
         <div class="container">
             <a class="navbar-brand-custom" href="index.html">
                 <div class="brand-mark"><i class="fa-solid fa-paw"></i></div>
-                <div class="brand-text">
-                    Лапа Помощи
-                    <small>Приют для животных</small>
-                </div>
+                <div class="brand-text">Лапа Помощи<small>Приют для животных</small></div>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <i class="fa-solid fa-bars" style="color: var(--color-dark-green); font-size: 20px;"></i>
@@ -502,32 +104,31 @@
             </div>
             <a class="btn-login d-none d-lg-inline-flex" href="account.html">
                 <i class="fa-regular fa-user"></i> Кабинет
+                <span class="fav-counter" id="favCounter">0</span>
             </a>
         </div>
     </nav>
 
-    <section class="page-header container">
-        <span class="eyebrow">Поддержите приют</span>
-        <h1 class="page-title">Ваша помощь меняет жизни</h1>
-        <p class="page-subtitle">Каждое пожертвование помогает нам кормить, лечить и находить дом для животных</p>
+    <!-- ГРАДИЕНТНЫЙ БАННЕР -->
+    <section class="page-header-gradient">
+        <div class="container">
+            <span class="eyebrow">Поддержите приют</span>
+            <h1 class="page-title">Ваша помощь меняет жизни</h1>
+            <p class="page-subtitle">Каждое пожертвование помогает нам кормить, лечить и находить дом для животных</p>
+        </div>
     </section>
 
-    <!-- БОЛЬШОЙ БЛОК ПОЖЕРТВОВАНИЯ -->
-    <section class="donation-section container">
+    <section class="container" style="padding-bottom: 80px;">
         <div class="donation-wrapper">
-            
-            <!-- Левая часть — форма -->
             <div class="donation-card">
                 <h2>Сделать пожертвование</h2>
                 <p class="donation-subtitle">Выберите сумму или введите свою</p>
-
                 <div class="amounts-grid">
                     <button class="amount-btn" onclick="selectAmount(this, 300)">300 ₽</button>
                     <button class="amount-btn" onclick="selectAmount(this, 500)">500 ₽</button>
                     <button class="amount-btn" onclick="selectAmount(this, 1000)">1000 ₽</button>
                     <button class="amount-btn" onclick="selectAmount(this, 3000)">3000 ₽</button>
                 </div>
-
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label">Сумма (₽)</label>
@@ -538,32 +139,24 @@
                         <input type="text" class="form-input" id="donateName" placeholder="Как к вам обращаться">
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="form-label">Email</label>
                     <input type="email" class="form-input" id="donateEmail" placeholder="example@mail.ru">
                 </div>
-
                 <div class="form-group">
                     <label class="form-label">Сообщение (необязательно)</label>
                     <textarea class="form-textarea" id="donateMessage" placeholder="Пожелание или комментарий"></textarea>
                 </div>
-
                 <button class="btn-submit" onclick="submitDonation()">
                     <i class="fa-solid fa-heart"></i> Пожертвовать
                 </button>
             </div>
 
-            <!-- Правая часть — информация -->
             <div class="donation-info">
-                
-                <!-- Итоговая сумма -->
                 <div class="total-block">
                     <div class="label">Ваш вклад</div>
                     <div class="value"><span id="totalValue">0</span> <span>₽</span></div>
                 </div>
-
-                <!-- Инфо-карточки -->
                 <div class="info-card">
                     <div class="info-card-header">
                         <div class="info-icon blue"><i class="fa-solid fa-bowl-food"></i></div>
@@ -571,7 +164,6 @@
                     </div>
                     <p>500 ₽ — недельный запас корма для одного питомца</p>
                 </div>
-
                 <div class="info-card">
                     <div class="info-card-header">
                         <div class="info-icon green"><i class="fa-solid fa-stethoscope"></i></div>
@@ -579,7 +171,6 @@
                     </div>
                     <p>1500 ₽ — осмотр ветеринара и базовые процедуры</p>
                 </div>
-
                 <div class="info-card">
                     <div class="info-card-header">
                         <div class="info-icon sand"><i class="fa-solid fa-house-chimney"></i></div>
@@ -587,46 +178,35 @@
                     </div>
                     <p>3000 ₽ — тёплое место и игрушки для питомца</p>
                 </div>
-
             </div>
-
         </div>
     </section>
 
-    <!-- БЛОК "ВАШ ВКЛАД В ЦИФРАХ" -->
     <section class="impact-section">
         <div class="container">
             <span class="eyebrow">Что мы делаем вместе</span>
-            <h2 class="impact-title">Ваш вклад в цифрах</h2>
-            <p class="impact-subtitle">Благодаря вашим пожертвованиям мы каждый день помогаем животным</p>
-
+            <h2 class="section-title">Ваш вклад в цифрах</h2>
+            <p class="section-subtitle">Благодаря вашим пожертвованиям мы каждый день помогаем животным</p>
             <div class="impact-grid">
-                <div class="impact-card">
-                    <div class="num">500+</div>
-                    <div class="label">Спасённых жизней с 2021 года</div>
-                </div>
-                <div class="impact-card">
-                    <div class="num">124</div>
-                    <div class="label">Нашли дом в 2026 году</div>
-                </div>
-                <div class="impact-card">
-                    <div class="num">200+</div>
-                    <div class="label">Питомцев сейчас в приюте</div>
-                </div>
-                <div class="impact-card">
-                    <div class="num">50+</div>
-                    <div class="label">Волонтёров и кураторов</div>
-                </div>
+                <div class="impact-card"><div class="num">500+</div><div class="label">Спасённых жизней с 2021 года</div></div>
+                <div class="impact-card"><div class="num">124</div><div class="label">Нашли дом в 2026 году</div></div>
+                <div class="impact-card"><div class="num">200+</div><div class="label">Питомцев сейчас в приюте</div></div>
+                <div class="impact-card"><div class="num">50+</div><div class="label">Волонтёров и кураторов</div></div>
             </div>
         </div>
     </section>
 
     <footer class="footer-custom">
         <div class="container">
-            <p>&copy; 2026 Приют «Лапа Помощи». Все права защищены.</p>
+            <div class="copyright-custom" style="margin-top: 0; border: none; padding-top: 0;">
+                &copy; 2026 Приют «Лапа Помощи». Все права защищены.
+                <a href="admin.html" class="admin-link"><i class="fa-solid fa-lock" style="font-size: 10px;"></i> Вход для сотрудников</a>
+            </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/common.js"></script>
     <script>
         function selectAmount(btn, amount) {
             document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
@@ -634,32 +214,23 @@
             document.getElementById('donateAmount').value = amount;
             updateTotal();
         }
-
         function updateTotal() {
             const value = document.getElementById('donateAmount').value || 0;
             document.getElementById('totalValue').textContent = parseInt(value).toLocaleString('ru-RU') || 0;
         }
-
         function submitDonation() {
             const amount = document.getElementById('donateAmount').value;
             const name = document.getElementById('donateName').value.trim();
             const email = document.getElementById('donateEmail').value.trim();
-
-            if (!amount || amount <= 0) { alert('Укажите сумму пожертвования'); return; }
-            if (!name) { alert('Укажите ваше имя'); return; }
-            if (!email || !email.includes('@')) { alert('Укажите корректный email'); return; }
-
-            alert(`Спасибо, ${name}! Пожертвование ${amount} ₽ принято. Квитанция отправлена на ${email}.`);
-            document.getElementById('donateAmount').value = '';
-            document.getElementById('donateName').value = '';
-            document.getElementById('donateEmail').value = '';
-            document.getElementById('donateMessage').value = '';
+            if (!amount || amount <= 0) { showToast('Укажите сумму', 'error'); return; }
+            if (!name) { showToast('Укажите имя', 'error'); return; }
+            if (!email || !email.includes('@')) { showToast('Укажите корректный email', 'error'); return; }
+            showToast(`Спасибо, ${name}! Пожертвование ${amount} ₽ принято`, 'success');
+            ['donateAmount', 'donateName', 'donateEmail', 'donateMessage'].forEach(id => document.getElementById(id).value = '');
             document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
             updateTotal();
         }
-
-        document.addEventListener('DOMContentLoaded', updateTotal);
+        document.addEventListener('DOMContentLoaded', () => { updateTotal(); updateFavCounter(); });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
